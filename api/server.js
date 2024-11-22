@@ -19,6 +19,7 @@ app.use(cors({
     origin: ['http://localhost:3000', 'https://saulus-myo8hu43t-markchristiandurana75-gmailcoms-projects.vercel.app'],
 }));
 
+
 const authRoute = require('../api/route/auth');
 const Request = require('../api/model/appointmentModel');
 const User = require('./model/userModel');
@@ -67,7 +68,8 @@ app.listen(serverPort, () => {
     console.log("Connected to Server port: " + serverPort);
 });
 
-
+// Define your routes here 
+app.get('/', (req, res) => { res.send('Event route works!'); });
 
 
 app.use('/user', medicalInfo);
@@ -80,7 +82,7 @@ app.use("/stocks", validateTokens, isAdmins, stockRoutes);
 app.use("/requests", validateTokens, requestRoute);
 app.use("/notification", authenticateTokens, notificationsRoute);
 app.use("/poster", authenticateTokens, posterRoute);
-app.use("/event", authenticateTokens, eventRoute);
+app.use("/event", eventRoute);
 app.use("/admin", authenticateTokens, isAdmins, adminRoute);
 app.use("/schedule", validateTokens, scheduleRoute);
 app.use("/post", validateTokens, postRoute);
