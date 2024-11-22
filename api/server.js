@@ -82,7 +82,7 @@ app.use("/stocks", validateTokens, isAdmins, stockRoutes);
 app.use("/requests", validateTokens, requestRoute);
 app.use("/notification", authenticateTokens, notificationsRoute);
 app.use("/poster", authenticateTokens, posterRoute);
-app.use("/event", eventRoute);
+app.use("/event", authenticateTokens, eventRoute);
 app.use("/admin", authenticateTokens, isAdmins, adminRoute);
 app.use("/schedule", validateTokens, scheduleRoute);
 app.use("/post", validateTokens, postRoute);
