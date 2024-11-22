@@ -560,7 +560,7 @@ router.post("/medical-leave", upload.single("image"), async (req, res) => {
     if (startDate < currentDate) {
         return res
             .status(400)
-            .json({ message: "Start date cannot be in the past." });
+            .json({ message: "Start date cannot be in the past or the current date." });
     }
 
     if (startDate >= endDate) {
@@ -873,7 +873,7 @@ router.post("/special-leave", upload.none(), async (req, res) => {
     if (startDate < currentDate) {
         return res
             .status(400)
-            .json({ message: "Start date cannot be in the past." });
+            .json({ message: "Start date cannot be in the past or the current date." });
     }
 
     if (startDate >= endDate) {
